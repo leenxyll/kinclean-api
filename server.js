@@ -14,7 +14,7 @@ const pool = mysql.createPool({
 var app = express()
 
 app.use(cors())
-app.use(express.json())
+// app.use(express.json())
 
 // // MySQL Connection
 // const connection = mysql.createConnection({
