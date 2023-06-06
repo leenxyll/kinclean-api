@@ -126,6 +126,10 @@ app.post("/createReceipt/TableNo=:TableNo/Date=:RecptDate", (req, res, next) => 
 })
 
 /*============================= GET =============================*/
+app.get('/helloworld', function(req, res, next) {
+    res.json({msg: 'helloworld'})
+})
+
 // Read Receipt from db
 app.get("/ReadReceipt/all", function (req, res, next) {
     try {
