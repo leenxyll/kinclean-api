@@ -14,23 +14,23 @@ const pool = mysql.createPool({
 var app = express()
 
 app.use(cors())
-// app.use(express.json())
+app.use(express.json())
 
-// // MySQL Connection
-// const connection = mysql.createConnection({
-//     host: process.env.DB_HOST,
-//     user: process.env.DB_USER,
-//     password: process.env.DB_PASSWORD,
-//     database: process.env.DB_DATABASE
-// })
+// MySQL Connection
+const connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
+})
 
-// connection.connect((err) => {
-//     if (err) {
-//         console.log('Error connecting to MySQL database = ', err)
-//         return;
-//     }
-//     console.log('MySQL successfully connected!');
-// })
+connection.connect((err) => {
+    if (err) {
+        console.log('Error connecting to MySQL database = ', err)
+        return;
+    }
+    console.log('MySQL successfully connected!');
+})
 
 /*============================= POST =============================*/
 // Create FoodType form postman
@@ -256,22 +256,6 @@ app.get("/ReadFoodType/single/TypeName=:FoodTypeName", function (req, res, next)
     }
 })
 
-// Read all Food from db
-app.get("/ReadFood/all", function (req, res, next) {
-    try {
-        pool.query(
-            "SELECT * FROM food", (err, rows, fields) => {
-            if (err) {
-                console.log(err);
-                return res.status(400).send();
-            }
-            res.status(200).json(rows)
-        })
-    } catch(err) {
-        console.log(err);
-        return res.status(500).send();
-    }
-})
 // Read all Food from db
 app.get("/ReadFood/all", function (req, res, next) {
     try {
