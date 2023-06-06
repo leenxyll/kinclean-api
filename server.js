@@ -16,21 +16,21 @@ var app = express()
 app.use(cors())
 app.use(express.json())
 
-// MySQL Connection
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
-})
+// // MySQL Connection
+// const connection = mysql.createConnection({
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_DATABASE
+// })
 
-connection.connect((err) => {
-    if (err) {
-        console.log('Error connecting to MySQL database = ', err)
-        return;
-    }
-    console.log('MySQL successfully connected!');
-})
+// connection.connect((err) => {
+//     if (err) {
+//         console.log('Error connecting to MySQL database = ', err)
+//         return;
+//     }
+//     console.log('MySQL successfully connected!');
+// })
 
 /*============================= POST =============================*/
 // Create FoodType form postman
@@ -366,6 +366,6 @@ app.patch("/updateTotalAmt/RecptNo=:RecptNo", async (req, res) => {
 })
 
 // Run server
-app.listen(3000, function(){
-    console.log('web server listening on port 3000')
+app.listen(5000, function(){
+    console.log('web server listening on port 5000')
 })
