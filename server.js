@@ -272,6 +272,40 @@ app.get("/ReadFood/all", function (req, res, next) {
         return res.status(500).send();
     }
 })
+// Read all Food from db
+app.get("/ReadFood/all", function (req, res, next) {
+    try {
+        pool.query(
+            "SELECT * FROM food", (err, rows, fields) => {
+            if (err) {
+                console.log(err);
+                return res.status(400).send();
+            }
+            res.status(200).json(rows)
+        })
+    } catch(err) {
+        console.log(err);
+        return res.status(500).send();
+    }
+})
+
+// Read Food by FoodSig from db
+app.get("/ReadFood/single/FoodSig=:FoodSig", function (req, res, next) {
+    const FoodSig = req.params.FoodSig
+    try {
+        pool.query(
+            "SELECT * FROM food WHERE FoodSig = ?", [FoodSig], (err, rows, fields) => {
+            if (err) {
+                console.log(err);
+                return res.status(400).send();
+            }
+            res.status(200).json(rows)
+        })
+    } catch(err) {
+        console.log(err);
+        return res.status(500).send();
+    }
+})
 
 // Read single Food by FoodName from db
 app.get("/ReadFood/single/FoodName=:FoodName", function (req, res, next) {
