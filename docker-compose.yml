@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  db:
+    image: mysql:8.0.32
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssword1234
+      MYSQL_DATABASE: kinclean
+      MYSQL_USER: lainey
+      MYSQL_PASSWORD: P@ssword1234
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d
+      - ./db-data:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    networks:
+      - mynetwork
+  api:
+    build: .
+    environment:
+      DB_HOST: db
+      DB_USER: lainey
+      DB_PASSWORD: P@ssword1234
+      DB_DATABASE: kinclean
+    ports:
+      - '5000:5000'
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+    driver: bridge
