@@ -127,7 +127,7 @@ app.post("/createReceipt/TableNo=:TableNo/Date=:RecptDate", (req, res, next) => 
 
 /*============================= GET =============================*/
 app.get('/helloworld', function(req, res, next) {
-    res.json({msg: 'helloworld'})
+    res.json({msg: 'helloworld' , data: [{le: 'leena'}, {test: 'daiU'}]})
 })
 
 // Read Receipt from db
@@ -139,7 +139,7 @@ app.get("/ReadReceipt/all", function (req, res, next) {
                 console.log(err);
                 return res.status(400).send();
             }
-            res.status(200).json(rows)
+            res.status(200).json({data: rows})
         })
     } catch(err) {
         console.log(err);
@@ -156,7 +156,7 @@ app.get("/ReadAReceipt", function (req, res, next) {
                 console.log(err);
                 return res.status(400).send();
             }
-            res.status(200).json(rows)
+            res.status(200).json({data: rows})
         })
     } catch(err) {
         console.log(err);
@@ -175,7 +175,7 @@ app.get("/History/RecptNo=:RecptNo", function (req, res, next) {
                 console.log(err);
                 return res.status(400).send();
             }
-            res.status(200).json(rows)
+            res.status(200).json({data: rows})
         })
     } catch(err) {
         console.log(err);
@@ -194,7 +194,7 @@ app.get("/Bill/RecptNo=:RecptNo", function (req, res, next) {
                 console.log(err);
                 return res.status(400).send();
             }
-            res.status(200).json(rows)
+            res.status(200).json({data: rows})
         })
     } catch(err) {
         console.log(err);
@@ -213,7 +213,7 @@ app.get("/ReadOrderList/all", function (req, res, next) {
                 console.log(err);
                 return res.status(400).send();
             }
-            res.status(200).json(rows)
+            res.status(200).json({data: rows})
         })
     } catch(err) {
         console.log(err);
@@ -230,7 +230,7 @@ app.get("/ReadFoodType/all", function (req, res, next) {
                 console.log(err);
                 return res.status(400).send();
             }
-            res.status(200).json(rows)
+            res.status(200).json({data: rows})
         })
     } catch(err) {
         console.log(err);
@@ -248,7 +248,7 @@ app.get("/ReadFoodType/single/TypeName=:FoodTypeName", function (req, res, next)
                 console.log(err);
                 return res.status(400).send();
             }
-            res.status(200).json(rows)
+            res.status(200).json({data: rows})
         })
     } catch(err) {
         console.log(err);
@@ -265,7 +265,7 @@ app.get("/ReadFood/all", function (req, res, next) {
                 console.log(err);
                 return res.status(400).send();
             }
-            res.status(200).json(rows)
+            res.status(200).json({data: rows})
         })
     } catch(err) {
         console.log(err);
@@ -283,7 +283,7 @@ app.get("/ReadFood/single/FoodSig=:FoodSig", function (req, res, next) {
                 console.log(err);
                 return res.status(400).send();
             }
-            res.status(200).json(rows)
+            res.status(200).json({data: rows})
         })
     } catch(err) {
         console.log(err);
@@ -301,7 +301,7 @@ app.get("/ReadFood/single/FoodName=:FoodName", function (req, res, next) {
                 console.log(err);
                 return res.status(400).send();
             }
-            res.status(200).json(rows)
+            res.status(200).json({data: rows})
         })
     } catch(err) {
         console.log(err);
@@ -319,7 +319,7 @@ app.get("/ReadFood/TypeName=:FoodTypeName", function (req, res, next) {
                 console.log(err);
                 return res.status(400).send();
             }
-            res.status(200).json(rows)
+            res.status(200).json({data: rows})
         })
     } catch(err) {
         console.log(err);
